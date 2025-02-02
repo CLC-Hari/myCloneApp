@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 15,
   },
-  headerImage: { width: 85, height: 35, marginHorizontal: 20 },
+  headerImage: { width: 38, height: 18, marginHorizontal: 20 },
   title: { fontSize: 20, fontWeight: "bold", textAlign: "center" },
   homeButton: {
     backgroundColor: "#ddd",
