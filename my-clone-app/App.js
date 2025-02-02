@@ -13,6 +13,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+        <Image
+          source={require("./assets/sait-logo.png")}
+          style={styles.headerImage}
+        />
         <Text style={styles.title}>Courses</Text>
       </View>
 
@@ -76,6 +80,13 @@ const styles = StyleSheet.create({
   },
   time: { fontSize: 18 },
   rightIcons: { flexDirection: "row", gap: 10 },
+  header: {
+    paddingBottom: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 15,
+  },
+  headerImage: { width: 85, height: 35, marginHorizontal: 20 },
   title: { fontSize: 20, fontWeight: "bold", textAlign: "center" },
   homeButton: {
     backgroundColor: "#ddd",
