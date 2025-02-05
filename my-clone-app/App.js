@@ -13,11 +13,18 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image
-          source={require("./assets/sait-logo.png")}
-          style={styles.headerImage}
-        />
-        <Text style={styles.title}>Courses</Text>
+        <View style={styles.leftContainer}>
+          <Image
+            source={require("./assets/sait-logo.png")}
+            style={styles.headerImage}
+          />
+        </View>
+
+        <View style={styles.centerContainer}>
+          <Text style={styles.title}>Courses</Text>
+        </View>
+
+        <View style={styles.rightContainer}></View>
       </View>
 
       <ScrollView style={styles.scrollView}>
@@ -30,8 +37,18 @@ export default function App() {
             title: "Winter 2025 Mobile Application Development (CPRG-303-E)",
             code: "202430 CPRG-303-E",
           },
-          { id: 2, title: "Title", code: "Code" },
-          { id: 3, title: "Title", code: "Code" },
+          {
+            id: 2,
+            title:
+              "Winter 2025 Emerging Trends in Software Development (INTP-302-B)",
+            code: "202430 INTP-302-B",
+          },
+          {
+            id: 3,
+            title:
+              "Winter 2025 Software Projects: Analysis, Design, and Management (CPSY-301-F)",
+            code: "202430 CPSY-301-F",
+          },
         ].map((course) => (
           <View key={course.id} style={styles.courseCard}>
             <Image
@@ -44,9 +61,10 @@ export default function App() {
                 {course.code} • Winter 2025
               </Text>
             </View>
-            <View style={styles.courseIcons}>
-              <Ionicons name="pin" size={24} color="black" />
-              <Ionicons name="ellipsis-horizontal" size={24} color="black" />
+            <View style={styles.courseIconsContainer}>
+              <View style={styles.courseIcons}>
+                <Ionicons name="ellipsis-horizontal" size={24} color="white" />
+              </View>
             </View>
           </View>
         ))}
@@ -54,15 +72,15 @@ export default function App() {
 
       <View style={styles.bottomNav}>
         <View style={styles.navItem}>
-          <Ionicons name="calendar-outline" size={28} color="black" />
+          <Ionicons name="calendar-outline" size={26} color="#666" />
           <Text style={styles.navText}>Upcoming</Text>
         </View>
         <View style={styles.navItem}>
-          <Ionicons name="grid-outline" size={28} color="black" />
+          <Ionicons name="grid-outline" size={26} color="#666" />
           <Text style={styles.navText}>Courses</Text>
         </View>
         <View style={styles.navItem}>
-          <Ionicons name="notifications-outline" size={28} color="black" />
+          <Ionicons name="notifications-outline" size={26} color="#666" />
           <Text style={styles.navText}>Notifications</Text>
         </View>
       </View>
@@ -78,52 +96,130 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginBottom: 10,
   },
+
   time: { fontSize: 18 },
+
   rightIcons: { flexDirection: "row", gap: 10 },
+
   header: {
-    paddingBottom: 10,
     flexDirection: "row",
     alignItems: "center",
-    gap: 15,
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    borderBottomWidth: 0.5,
+    borderColor: "#ccc",
+    height: 50,
+    paddingTop: 10,
   },
-  headerImage: { width: 38, height: 18, marginHorizontal: 20 },
-  title: { fontSize: 20, fontWeight: "bold", textAlign: "center" },
+
+  leftContainer: {
+    flex: 1,
+    justifyContent: "flex-start",
+  },
+
+  centerContainer: {
+    flex: 2,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  rightContainer: {
+    flex: 1,
+    alignItems: "flex-end",
+  },
+
+  headerImage: {
+    width: 38,
+    height: 18,
+  },
+
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+
   homeButton: {
-    backgroundColor: "#ddd",
+    backgroundColor: "#fff",
     padding: 10,
     marginHorizontal: 20,
     borderRadius: 5,
     alignItems: "center",
-    marginVertical: 10,
+    marginVertical: 20,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
-  homeButtonText: { fontSize: 16, fontWeight: "500" },
+
+  homeButtonText: { fontSize: 14 },
   scrollView: { flex: 1 },
+
   courseCard: {
     backgroundColor: "#fff",
     borderRadius: 10,
     marginHorizontal: 20,
     marginBottom: 15,
-    overflow: "hidden",
     elevation: 3,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
-  courseImage: { width: "100%", height: 120 },
-  courseTextContainer: { padding: 10 },
-  courseTitle: { fontSize: 16, fontWeight: "bold" },
-  courseSubtitle: { fontSize: 14, color: "#666" },
-  courseIcons: {
-    flexDirection: "row",
+
+  courseImage: {
+    width: "100%",
+    height: 120,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  courseTextContainer: {
+    padding: 10,
+    borderTopWidth: 4,
+    borderColor: "#4C88A7",
+  },
+  courseTitle: { fontSize: 17, fontWeight: "bold" },
+  courseSubtitle: {
+    fontSize: 12,
+    color: "#666",
+    paddingTop: 10,
+    paddingBottom: 10,
+  },
+
+  courseIconsContainer: {
+    width: 40,
+    height: 40,
+    backgroundColor: "rgba(36, 43, 59, 0.5)",
+    borderRadius: 10,
     position: "absolute",
     top: 10,
     right: 10,
-    gap: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
+
+  courseIcons: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  iconStyle: {
+    marginLeft: 10,
+  },
+
   bottomNav: {
     flexDirection: "row",
     justifyContent: "space-around",
     padding: 10,
-    borderTopWidth: 1,
+    borderTopWidth: 0.5,
     borderColor: "#ccc",
+    backgroundColor: "#fff",
+    shadowOffset: { width: 0, height: -2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    shadowColor: "#000",
+    elevation: 5,
   },
+
   navItem: { alignItems: "center" },
-  navText: { fontSize: 12, color: "#666" },
+  navText: { fontSize: 10, color: "#666", paddingTop: 5, paddingBottom: 10 },
 });
